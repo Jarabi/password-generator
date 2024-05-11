@@ -1,9 +1,67 @@
 <html>
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <link rel="stylesheet" href="index.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./images/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./images/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./images/site.webmanifest" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+            rel="stylesheet"
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css" />
+        <title>Random Password Generator</title>
     </head>
     <body>
-        <h1></h1>
+        <div class="container">
+
+            <!-- Heading -->
+
+            <div id="header">
+                <h1 class="header-text">
+                    <span class="white-text">Generate a</span><br /><span
+                        class="green-text"
+                        >random password</span
+                    >
+                </h1>
+                <p class="tagline">Never use an insecure password again.</p>
+            </div>
+
+            <!-- Controls -->
+
+            <div id="controls">
+                <button class="btn">Generate passwords</button>
+            </div>
+
+            <!-- Passwords -->
+
+            <div id="passwords">
+                <div class="password one green-text">Password1</div>
+                <div class="password two green-text">Password2</div>
+            </div>
+        </div>
         <script src="index.js"></script>
     </body>
 </html>
