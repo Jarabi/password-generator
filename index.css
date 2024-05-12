@@ -5,8 +5,11 @@
 }
 
 body {
-    font-family: "Karla", sans-serif;
-    background-color: #1C1C1C;
+    font-family: "Inter", sans-serif;
+    background-color: #2F3E53;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Utility classes */
@@ -16,15 +19,14 @@ body {
 }
 
 .white-text {
-    color: #FFFFFF
+    color: #ECFDF5
 }
 
 /* Container */
 
 .container {
     width: 500px;
-    height: 500px;
-    margin: 100px auto;
+    height: 600px;
     padding: 40px;
     background: #1F2937;
     display: flex;
@@ -32,58 +34,172 @@ body {
     border-radius: 3px;
 }
 
-/* Header */
+/* Mode */
 
-#header {
-    margin-top: 2rem;
+#mode {
+    display: flex;
+    justify-content: flex-end;
 }
 
+#mode button {
+    font-size: 0.8rem;
+    padding: 7px 10px;
+    color: #ECFDF5;
+    background: #2F3E53;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Header */
+
 .header-text {
+    font-family: "Karla", sans-serif;
     font-weight: 800;
     line-height: 1;
     margin-bottom: 0.5rem;
 }
 
 .tagline {
-    font-family: "Inter", sans-serif;
     font-weight: 400;
-    color: #D5D4D8
+    color: #ECFDF5
+}
+
+/* Parameters */
+
+#parameters {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #ECFDF5;
+    margin-top: 40px;
+    gap: 20px;
+    padding: 20px 10px;
+    border: 1px solid #2F3E53;
+}
+
+.parameter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.parameter label {
+    width: 200px;
+    font-weight: 500;
+    position: relative;
+}
+
+.parameter #length {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #273549;
+    color: #ECFDF5;
+}
+
+.parameter #length:focus {
+    outline: none;
+}
+
+.parameter input[type="checkbox"] {
+    display: none;
+}
+
+.parameter .label-text {
+    position: absolute;
+    top: 4px;
+    left: 25px;
+}
+
+.parameter .custom-checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #273549;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Style for the custom checkmark */
+.parameter .custom-checkbox::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #10B981;
+    border-radius: 2px;
+    opacity: 0;
+}
+
+/* Show the checkmark when checkbox is checked */
+.parameter input[type="checkbox"]:checked + .custom-checkbox::after {
+    opacity: 1;
 }
 
 /* Controls */
 
-#controls {
-    margin-top: 50px;
-}
-
-#controls .generate-btn {
-    font-size: 1rem;
-    color: #FFFFFF;
+.generate-btn {
+    font-size: 0.8rem;
+    color: #ECFDF5;
     width: 160px;
     padding: 8px 0;
     border: none;
     border-radius: 3px;
     background-color: #10B981;
     cursor: pointer;
+    margin-top: 13px;
 }
 
 /* Passwords */
 
 #passwords {
     display: flex;
-    margin-top: 35px;
+    margin-top: 36px;
     border-top: 1px solid #2F3E53;
     gap: 34px;
 }
 
-#passwords div {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
+#passwords .password-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 35px;
     width: 200px;
     height: 39px;
     padding: 10px 0;
     background-color: #273549;
     border-radius: 5px;
-    text-align: center;
+    cursor: pointer;
+}
+
+#passwords .password-text .password-one,
+#passwords .password-text .password-two {
+    width: 150px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #10B981;
+    padding-right: 20px;
+    text-align: end;
+}
+
+#passwords .password-text .password-copy {
+    width: 20px;
+    height: 20px;
+}
+
+#passwords .password-text img {
+    width: 100%;
+    height: 100%;
+    text-align: end;
+    display: none;
+}
+
+#passwords .password-text:hover img {
+    display: block;
 }
