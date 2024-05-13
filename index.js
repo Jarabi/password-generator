@@ -7,32 +7,53 @@ const characters = [
 ];
 
 // Fetch the DOM elements
+const passwordLengthInput = document.getElementById('password-length');
+const excludeNumbersCheck = document.getElementById('x-numbers');
+const excludeSpecialChars = document.getElementById('x-special-chars');
 const generateButton = document.querySelector('.generate-btn');
 const passwordOne = document.querySelector('.password-one');
 const passwordTwo = document.querySelector('.password-two');
-const passwordLengthInput = document.getElementById('password-length');
 
 generateButton.addEventListener('click', () => {
-  // Clear output
+  clearPasswords();
+
+  if (checkPasswordLength(+passwordLengthInput.value)) {
+    generatePasswords(+passwordLengthInput.value);
+  }
+});
+
+function clearPasswords() {
   passwordOne.textContent = '';
   passwordTwo.textContent = '';
-  let passwordLength = +passwordLengthInput.value;
+}
 
-  // Check password length
-
+function checkPasswordLength(passwordLength) {
   if (passwordLength < 8 || passwordLength > 15) {
     passwordLengthInput.classList.remove('normal-input');
     passwordLengthInput.classList.add('error-input');
+    return false;
   } else {
     passwordLengthInput.classList.remove('error-input');
     passwordLengthInput.classList.add('normal-input');
-
-    // Generate passwords
-    for (let i = 0; i < passwordLength; i++) {
-      passwordOne.textContent +=
-        characters[Math.floor(Math.random() * characters.length)];
-      passwordTwo.textContent +=
-        characters[Math.floor(Math.random() * characters.length)];
-    }
+    return true;
   }
-});
+}
+
+function generatePasswords(passwordLength) {
+  let source = [...characters];
+
+  if (excludeNumbersCheck.checked) {
+    source = source.filter((char) => !/[0-9]/.test(char));
+  }
+
+  if (excludeSpecialChars.checked) {
+    source = source.filter((char) => /[a-zA-Z0-9]/.test(char));
+  }
+
+  for (let i = 0; i < passwordLength; i++) {
+    passwordOne.textContent +=
+      source[Math.floor(Math.random() * source.length)];
+    passwordTwo.textContent +=
+      source[Math.floor(Math.random() * source.length)];
+  }
+}

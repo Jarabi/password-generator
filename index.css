@@ -92,13 +92,14 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
+    position: relative;
 }
 
 .parameter label {
     width: 200px;
     font-weight: 500;
-    position: relative;
+    margin-top: 2px;
 }
 
 .parameter #password-length {
@@ -112,42 +113,29 @@ body {
 }
 
 .parameter input[type="checkbox"] {
-    display: none;
+    width: 15px;
+    height: 15px;
 }
 
-.parameter .label-text {
-    position: absolute;
-    top: 4px;
-    left: 25px;
-}
-
-.parameter .custom-checkbox {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #273549;
-    border-radius: 4px;
-    position: relative;
-    cursor: pointer;
-}
-
-/* Style for the custom checkmark */
-.parameter .custom-checkbox::after {
+.parameter input[type="checkbox"]:checked+label::before {
     content: "";
+    display: block;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
+    text-align: center;
+    height: 15px;
+    width: 15px;
+    left: 0;
+    top: 0;
     background-color: #10B981;
     border-radius: 2px;
-    opacity: 0;
 }
 
-/* Show the checkmark when checkbox is checked */
-.parameter input[type="checkbox"]:checked + .custom-checkbox::after {
-    opacity: 1;
+.parameter input[type="checkbox"]:checked+label::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 3px;
+    top: 3px;
 }
 
 /* Generate button */
