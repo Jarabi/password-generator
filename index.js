@@ -10,17 +10,29 @@ const characters = [
 const generateButton = document.querySelector('.generate-btn');
 const passwordOne = document.querySelector('.password-one');
 const passwordTwo = document.querySelector('.password-two');
+const passwordLengthInput = document.getElementById('password-length');
 
 generateButton.addEventListener('click', () => {
   // Clear output
   passwordOne.textContent = '';
   passwordTwo.textContent = '';
+  let passwordLength = +passwordLengthInput.value;
 
-  // Generate passwords
-  for (let i = 0; i < 15; i++) {
-    passwordOne.textContent +=
-      characters[Math.floor(Math.random() * characters.length)];
-    passwordTwo.textContent +=
-      characters[Math.floor(Math.random() * characters.length)];
+  // Check password length
+
+  if (passwordLength < 8 || passwordLength > 15) {
+    passwordLengthInput.classList.remove('normal-input');
+    passwordLengthInput.classList.add('error-input');
+  } else {
+    passwordLengthInput.classList.remove('error-input');
+    passwordLengthInput.classList.add('normal-input');
+
+    // Generate passwords
+    for (let i = 0; i < passwordLength; i++) {
+      passwordOne.textContent +=
+        characters[Math.floor(Math.random() * characters.length)];
+      passwordTwo.textContent +=
+        characters[Math.floor(Math.random() * characters.length)];
+    }
   }
 });

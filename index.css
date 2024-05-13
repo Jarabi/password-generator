@@ -22,6 +22,16 @@ body {
     color: #ECFDF5
 }
 
+.normal-input {
+    border: none;
+    color: #ECFDF5;
+}
+
+.error-input {
+    border: 1px solid #F00;
+    color: #F00;
+}
+
 /* Container */
 
 .container {
@@ -91,15 +101,13 @@ body {
     position: relative;
 }
 
-.parameter #length {
+.parameter #password-length {
     padding: 5px;
-    border: none;
     border-radius: 3px;
     background-color: #273549;
-    color: #ECFDF5;
 }
 
-.parameter #length:focus {
+.parameter #password-length:focus {
     outline: none;
 }
 
@@ -142,7 +150,7 @@ body {
     opacity: 1;
 }
 
-/* Controls */
+/* Generate button */
 
 .generate-btn {
     font-size: 0.8rem;
@@ -184,8 +192,7 @@ body {
     font-size: 0.8rem;
     font-weight: 700;
     color: #10B981;
-    padding-right: 20px;
-    text-align: end;
+    text-align: center;
 }
 
 #passwords .password-text .password-copy {
