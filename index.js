@@ -10,11 +10,13 @@ const characters = [
 const passwordLengthInput = document.getElementById('password-length');
 const excludeNumbersCheck = document.getElementById('x-numbers');
 const excludeSpecialChars = document.getElementById('x-special-chars');
-const generateButton = document.querySelector('.generate-btn');
-const passwordOne = document.querySelector('.password-one');
-const passwordTwo = document.querySelector('.password-two');
+const generatePasswordBtn = document.querySelector('.generate-btn');
+const passwordTexts = document.querySelectorAll('.password-text');
+let password = '';
 
-generateButton.addEventListener('click', () => {
+// ++++++++++++++ Add event listeners ++++++++++++++++++++//
+
+generatePasswordBtn.addEventListener('click', () => {
   clearPasswords();
 
   if (checkPasswordLength(+passwordLengthInput.value)) {
@@ -22,11 +24,40 @@ generateButton.addEventListener('click', () => {
   }
 });
 
+passwordTexts.forEach((textDiv) => {
+  textDiv.addEventListener('click', (e) => {
+    password = e.target.textContent;
+
+    if (!password) return;
+
+    navigator.clipboard.writeText(password).then(() => {
+      e.target.textContent = 'Copied!';
+    });
+  });
+
+  textDiv.addEventListener('mouseleave', (e) => {
+    if (textDiv.textContent !== 'Copied!') return;
+    textDiv.textContent = password;
+  });
+});
+
+// ++++++++++++++ Functions +++++++++++++++++++++++++++++//
+
+/**
+ * Clear all password texts
+ * @returns {void}
+ */
 function clearPasswords() {
-  passwordOne.textContent = '';
-  passwordTwo.textContent = '';
+  passwordTexts.forEach((textDiv) => {
+    textDiv.textContent = '';
+  });
 }
 
+/**
+ *
+ * @param {number} passwordLength
+ * @returns {boolean}
+ */
 function checkPasswordLength(passwordLength) {
   if (passwordLength < 8 || passwordLength > 15) {
     passwordLengthInput.classList.remove('normal-input');
@@ -39,6 +70,11 @@ function checkPasswordLength(passwordLength) {
   }
 }
 
+/**
+ *
+ * @param {number} passwordLength
+ * @returns {void}
+ */
 function generatePasswords(passwordLength) {
   let source = [...characters];
 
@@ -50,10 +86,9 @@ function generatePasswords(passwordLength) {
     source = source.filter((char) => /[a-zA-Z0-9]/.test(char));
   }
 
-  for (let i = 0; i < passwordLength; i++) {
-    passwordOne.textContent +=
-      source[Math.floor(Math.random() * source.length)];
-    passwordTwo.textContent +=
-      source[Math.floor(Math.random() * source.length)];
-  }
+  passwordTexts.forEach((textDiv) => {
+    for (let i = 0; i < passwordLength; i++) {
+      textDiv.textContent += source[Math.floor(Math.random() * source.length)];
+    }
+  });
 }
