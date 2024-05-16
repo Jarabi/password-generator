@@ -44,6 +44,8 @@ Light mode page view with passwords generated.
 
 Dark mode page view with passwords generated.
 
+You can interact with the page [here](https://jarabi.github.io/password-generator/).
+
 ### Set password length
 
 Password length is restricted to between 8 and 15 numbers. The default value is 15. The user can select password length, however, if the value falls outside the specified bounds, no passwords will be generated and the input will be in red color. This error state is removed and passwords generated once an acceptable value is entered.
