@@ -115,7 +115,6 @@ body {
 
 #display-mode #color-switch-input:checked ~ .color-switch-label::before {
     content: "Dark mode";
-    /* left: 2em; */
 }
 
 /* Header */
