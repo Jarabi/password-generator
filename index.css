@@ -4,40 +4,52 @@
     padding: 0;
 }
 
-body {
-    font-family: "Inter", sans-serif;
-    background-color: #2F3E53;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+:root {
+    --background-color: #ECFDF5;
+    --dark-gray-color: #273549;
+    --light-gray-color: #6B7280;
+    --text-color: #1F2937;
+    --accent-color: #10B981;
+    --error-color: #F00;
 }
 
 /* Utility classes */
 
 .green-text {
-    color: #4ADF86
+    color: var(--accent-color)
 }
 
 .white-text {
-    color: #ECFDF5
+    color: var(--text-color)
 }
 
 .normal-input {
-    border: none;
-    color: #ECFDF5;
+    color: var(--text-color);
+    border: 1px solid var(--light-gray-color);
 }
 
 .error-input {
-    border: 1px solid #F00;
-    color: #F00;
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
 }
 
-.hide {
-    display: none;
+/* Body */
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--dark-gray-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.show {
-    display: block;
+.dark-mode {
+    --background-color: #1F2937;
+    --dark-gray-color: #273549;
+    --light-gray-color: #6B7280;
+    --text-color: #ECFDF5;
+    --accent-color: #10B981;
+    --error-color: #F00;
 }
 
 /* Container */
@@ -46,27 +58,64 @@ body {
     width: 500px;
     height: 550px;
     padding: 40px;
-    background: #1F2937;
+    background: var(--background-color);
     display: flex;
     flex-direction: column;
     border-radius: 3px;
 }
 
-/* Mode */
+/* Display mode */
 
-#mode {
+#display-mode {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
-#mode button {
-    font-size: 0.8rem;
-    padding: 7px 10px;
-    color: #ECFDF5;
-    background: #2F3E53;
-    border: none;
-    border-radius: 5px;
+#display-mode .color-switch-label {
+    width: 4em;
+    height: 2em;
+    /* font-size: 0.9rem; */
+    border-radius: 10em;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border: 2px solid var(--accent-color);
+    position: absolute;
     cursor: pointer;
+}
+
+#display-mode .color-switch-label::before {
+    content: "Light mode";
+    position: absolute;
+    display: inline-block;
+    width: 12em;
+    left: -6em;
+    top: 0.3em;
+}
+
+#display-mode .color-switch-label .color-switch-toggle {
+    width: 1.5em;
+    height: 1.5em;
+    background-color: var(--accent-color);
+    position: absolute;
+    border-radius: 10em;
+    top: 0.15em;
+    left: 0.1em;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+}
+
+#display-mode #color-switch-input {
+    display: none;
+}
+
+#display-mode #color-switch-input:checked ~ label .color-switch-toggle {
+    transform: translateX(2em);
+}
+
+#display-mode #color-switch-input:checked ~ .color-switch-label::before {
+    content: "Dark mode";
+    /* left: 2em; */
 }
 
 /* Header */
@@ -80,7 +129,7 @@ body {
 
 .tagline {
     font-weight: 400;
-    color: #ECFDF5
+    color: var(--text-color)
 }
 
 /* Parameters */
@@ -89,17 +138,17 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 0.8rem;
-    color: #ECFDF5;
     margin-top: 40px;
     gap: 20px;
     padding: 20px 10px;
-    border: 1px solid #2F3E53;
+    border: 1px solid var(--dark-gray-color);
 }
 
 .parameter {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    color: var(--text-color);
     gap: 5px;
     position: relative;
 }
@@ -113,7 +162,7 @@ body {
 .parameter #password-length {
     padding: 5px;
     border-radius: 3px;
-    background-color: #273549;
+    background-color: var(--background-color);
 }
 
 .parameter #password-length:focus {
@@ -134,7 +183,7 @@ body {
     width: 15px;
     left: 0;
     top: 0;
-    background-color: #10B981;
+    background-color: var(--accent-color);
     border-radius: 2px;
 }
 
@@ -155,7 +204,7 @@ body {
     padding: 8px 0;
     border: none;
     border-radius: 3px;
-    background-color: #10B981;
+    background-color: var(--accent-color);
     cursor: pointer;
     margin-top: 20px;
 }
@@ -171,7 +220,7 @@ body {
 #password-section .passwords {
     display: flex;
     margin-top: 20px;
-    border-top: 1px solid #2F3E53;
+    border-top: 1px solid var(--light-gray-color);
     gap: 34px;
 }
 
@@ -183,10 +232,10 @@ body {
     font-weight: 700;
     margin-top: 20px;
     width: 200px;
-    height: 39px;
+    height: 35px;
     padding: 10px 0;
-    color: #10B981;
-    background-color: #273549;
+    color: var(--accent-color);
+    background-color: var(--dark-gray-color);
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
@@ -194,5 +243,5 @@ body {
 
 #password-section .copy-text {
     font-size: 0.8rem;
-    color: #ECFDF5;
+    color: var(--text-color);
 }

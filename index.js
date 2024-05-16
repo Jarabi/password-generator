@@ -7,6 +7,7 @@ const characters = [
 ];
 
 // Fetch the DOM elements
+const colorSwitch = document.getElementById('color-switch-input');
 const passwordLengthInput = document.getElementById('password-length');
 const excludeNumbersCheck = document.getElementById('x-numbers');
 const excludeSpecialChars = document.getElementById('x-special-chars');
@@ -15,6 +16,8 @@ const passwordTexts = document.querySelectorAll('.password-text');
 let password = '';
 
 // ++++++++++++++ Add event listeners ++++++++++++++++++++//
+
+colorSwitch.addEventListener('click', checkMode);
 
 generatePasswordBtn.addEventListener('click', () => {
   clearPasswords();
@@ -42,6 +45,14 @@ passwordTexts.forEach((textDiv) => {
 });
 
 // ++++++++++++++ Functions +++++++++++++++++++++++++++++//
+
+function checkMode() {
+  if (colorSwitch.checked) {
+    document.body.classList.add('dark-mode');
+  } else {
+    document.body.classList.remove('dark-mode');
+  }
+}
 
 /**
  * Clear all password texts

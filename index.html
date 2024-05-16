@@ -38,16 +38,19 @@
         <div class="container">
 
             <!-- Mode -->
-            <div id="mode">
-                <button>Light mode</button>
+            <div id="display-mode">
+                <input type="checkbox" id="color-switch-input">
+                <label class="color-switch-label" for="color-switch-input">
+                    <div class="color-switch-toggle"></div>
+                </label>
             </div>
 
             <!-- Heading -->
 
             <div id="header">
                 <h1 class="header-text">
-                    <span class="white-text">Generate a</span><br />
-                    <span class="green-text">random password</span>
+                    <span class="header--first-part white-text">Generate a</span><br />
+                    <span class="header--second-part green-text">random password</span>
                 </h1>
                 <p class="tagline">Never use an insecure password again.</p>
             </div>
@@ -60,8 +63,8 @@
                     <input
                         type="number"
                         id="password-length"
-                        class="normal-input"
                         name="password-length"
+                        class="normal-input"
                         min="8"
                         max="15"
                         value="15"
